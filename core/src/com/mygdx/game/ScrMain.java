@@ -1,11 +1,20 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 
 import sun.java2d.ScreenUpdateManager;
@@ -24,9 +33,21 @@ import sun.java2d.ScreenUpdateManager;
     }
     public void create() {
         stage = new Stage();
-        tbsMenu = new TbsMenu();
-        tbGame = new TbMenu("Game", tbsMenu);
-        tbGame.setPosition(Gdx.graphics.getWidth() / 2 - Gdx.graphics.getWidth() / 8, Gdx.graphics.getHeight() / 3 * 2);
+        //tbsMenu = new TbsMenu();
+        //tbGame = new TbMenu("Game", tbsMenu);
+        //tbGame.setPosition(Gdx.graphics.getWidth() / 2 - Gdx.graphics.getWidth() / 8, Gdx.graphics.getHeight() / 3 * 2);
+
+        TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
+        TextureAtlas taNewGame;
+        BitmapFont font = new BitmapFont();
+        skin.add("default", font);
+        taNewGame = new TextureAtlas(Gdx.files.internal("buttonpressed.txt"));
+        skin.addRegions(taNewGame);
+        buttonStyle.up = skin.getDrawable("buttonpressed01");
+        buttonStyle.over = skin.getDrawable("buttonpressed02");
+        buttonStyle.font = skin.getFont("default");
+        TextButton button = new TextButton("", buttonStyle);
+        stage.addActor(button);
     }
     @Override
     public void show() {

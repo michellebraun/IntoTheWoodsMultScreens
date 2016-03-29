@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
  */
 public class TbMenu extends TextButton{
     String sText;
-    // creating it based on a tbs - not a skin
+
     public TbMenu(String text, TbsMenu skin) {
         super(text, skin);
         sText = text;

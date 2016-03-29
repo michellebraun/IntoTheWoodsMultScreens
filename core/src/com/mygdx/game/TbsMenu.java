@@ -13,18 +13,20 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
  * Created by michelle on 3/27/2016.
  */
 public class TbsMenu extends TextButton.TextButtonStyle {
-    Skin skin = new Skin(); // a generic skin for the tbs.
+    // TextButton.TextButtonStyle buttonStyle;
+   /* Skin skin = new Skin(); // a generic skin for the tbs.
     public TbsMenu(){
         TextureAtlas taNewGame;
         BitmapFont font = new BitmapFont();
         skin.add("default", font);
-        taNewGame = new TextureAtlas(Gdx.files.internal("Heroinepacked.pack"));
+        taNewGame = new TextureAtlas(Gdx.files.internal("buttonpressed.txt"));
         skin.addRegions(taNewGame);
-
-
+        this.up = skin.getDrawable("buttonpressed01");
+        this.over = skin.getDrawable("buttonpressed02");
+        this.font = skin.getFont("default");
     }
-
     public Skin getTbs() {
         return skin;
     }
+}*/
 }
