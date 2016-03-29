@@ -14,22 +14,24 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 /**
  * Created by michelle on 3/27/2016.
  */
-public class ScrGame implements Screen, InputProcessor {
-    
+public class ScrGame implements Screen {
+
+    GamIntoTheWoods gamIntoTheWoods;
     TextureAtlas taHero;
-    TextureRegion trCurrentFrame, trLeft[], trRight[],trUp[],trDown[];
-    Animation aniLeft, aniRight,aniUp,aniDown;
+    TextureRegion trCurrentFrame, trLeft[], trRight[], trUp[], trDown[];
+    Animation aniLeft, aniRight, aniUp, aniDown;
     float fStateTime;
     SpriteBatch spriteBatch;
     Texture Background;
-    float HeroX,HeroY,HeroSpeed=50f;
+    float HeroX, HeroY, HeroSpeed = 50f;
 
     public ScrGame(GamIntoTheWoods gamIntoTheWoods) {
+        this.gamIntoTheWoods = gamIntoTheWoods;
     }
 
 
     public void create() {
-        Background= new Texture(Gdx.files.internal("lostwoods2.jpg"));
+        Background = new Texture(Gdx.files.internal("lostwoods2.jpg"));
         taHero = new TextureAtlas("Heroinepacked.pack");
         trCurrentFrame = new TextureRegion();
         trLeft = new TextureRegion[3];
@@ -42,10 +44,10 @@ public class ScrGame implements Screen, InputProcessor {
             trUp[i] = taHero.findRegion("Up" + (i + 1));
             trDown[i] = taHero.findRegion("Down" + (i + 1));
         }
-        aniRight= new Animation(1f/4,trRight);
-        aniLeft= new Animation(1f/4,trLeft);
-        aniUp= new Animation(1f/4,trUp);
-        aniDown= new Animation(1f/4,trDown);
+        aniRight = new Animation(1f / 4, trRight);
+        aniLeft = new Animation(1f / 4, trLeft);
+        aniUp = new Animation(1f / 4, trUp);
+        aniDown = new Animation(1f / 4, trDown);
 
         spriteBatch = new SpriteBatch();
     }
@@ -58,28 +60,28 @@ public class ScrGame implements Screen, InputProcessor {
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-        trCurrentFrame= aniDown.getKeyFrame(0);
+        trCurrentFrame = aniDown.getKeyFrame(0);
         fStateTime += Gdx.graphics.getDeltaTime();
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT)) {
             HeroX -= Gdx.graphics.getDeltaTime() * HeroSpeed;
-            trCurrentFrame = aniLeft.getKeyFrame(0+fStateTime,true);
+            trCurrentFrame = aniLeft.getKeyFrame(0 + fStateTime, true);
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_RIGHT)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.DPAD_RIGHT)) {
             HeroX += Gdx.graphics.getDeltaTime() * HeroSpeed;
-            trCurrentFrame = aniRight.getKeyFrame(0+fStateTime,true);
+            trCurrentFrame = aniRight.getKeyFrame(0 + fStateTime, true);
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_UP)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.DPAD_UP)) {
             HeroY += Gdx.graphics.getDeltaTime() * HeroSpeed;
-            trCurrentFrame = aniUp.getKeyFrame(0+fStateTime,true);
+            trCurrentFrame = aniUp.getKeyFrame(0 + fStateTime, true);
 
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_DOWN)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.DPAD_DOWN)) {
             HeroY -= Gdx.graphics.getDeltaTime() * HeroSpeed;
-            trCurrentFrame = aniDown.getKeyFrame(0+fStateTime,true);
+            trCurrentFrame = aniDown.getKeyFrame(0 + fStateTime, true);
         }
         spriteBatch.begin();
-        spriteBatch.draw(Background,0,0);
-        spriteBatch.draw(trCurrentFrame, (int)HeroX, (int)HeroY);
+        spriteBatch.draw(Background, 0, 0);
+        spriteBatch.draw(trCurrentFrame, (int) HeroX, (int) HeroY);
         spriteBatch.end();
     }
 
@@ -106,45 +108,5 @@ public class ScrGame implements Screen, InputProcessor {
     @Override
     public void dispose() {
 
-    }
-
-    @Override
-    public boolean keyDown(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped(char character) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
     }
 }

@@ -2,6 +2,9 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Game;
 
+//https://github.com/Mrgfhci/LibGDX1/tree/master/MultiScreens
+//Referenced ^ For all of the multi screen switching
+
 public class GamIntoTheWoods extends Game {
 
 	ScrMain scrMain;
@@ -10,14 +13,12 @@ public class GamIntoTheWoods extends Game {
 
 	public enum GameState {
 		MENU, GAME
-		          //http://ics3ui.sgrondin.ca/ss23/LibGDX.html
-		                //Different states.
 	}
 
-	public GameState currentState; //Current state.
+	public GameState currentState;
 
-	public void updateState(){ //Updates to different states based on what the current one is.
-		if(currentState==GameState.GAME){
+	public void updateState(){
+		if(currentState==GameState.MENU){
 			setScreen(scrMain);
 		}else if(currentState==GameState.GAME) {
 			setScreen(scrGame);

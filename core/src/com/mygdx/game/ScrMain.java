@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -8,13 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 
 import sun.java2d.ScreenUpdateManager;
@@ -22,12 +16,12 @@ import sun.java2d.ScreenUpdateManager;
 /**
  * Created by michelle on 3/22/2016.
  */
- public class ScrMain implements Screen, InputProcessor {
+ public class ScrMain implements Screen {
     GamIntoTheWoods gamIntoTheWoods;
     TextButton tbGame;
     Stage stage;
     Skin skin = new Skin();
-    TbsMenu tbsMenu;
+    //TbsMenu tbsMenu;
 
     public ScrMain(GamIntoTheWoods gamIntoTheWoods) {
     }
@@ -37,16 +31,16 @@ import sun.java2d.ScreenUpdateManager;
         //tbGame = new TbMenu("Game", tbsMenu);
         //tbGame.setPosition(Gdx.graphics.getWidth() / 2 - Gdx.graphics.getWidth() / 8, Gdx.graphics.getHeight() / 3 * 2);
 
-        TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
+        TextButton.TextButtonStyle btnsbuttonStyle = new TextButton.TextButtonStyle();
         TextureAtlas taNewGame;
         BitmapFont font = new BitmapFont();
         skin.add("default", font);
         taNewGame = new TextureAtlas(Gdx.files.internal("buttonpressed.txt"));
         skin.addRegions(taNewGame);
-        buttonStyle.up = skin.getDrawable("buttonpressed01");
-        buttonStyle.over = skin.getDrawable("buttonpressed02");
-        buttonStyle.font = skin.getFont("default");
-        TextButton button = new TextButton("", buttonStyle);
+        btnsbuttonStyle.up = skin.getDrawable("buttonpressed01");
+        btnsbuttonStyle.over = skin.getDrawable("buttonpressed02");
+        btnsbuttonStyle.font = skin.getFont("default");
+        TextButton button = new TextButton("", btnsbuttonStyle);
         stage.addActor(button);
     }
     @Override
@@ -56,10 +50,12 @@ import sun.java2d.ScreenUpdateManager;
 
     @Override
     public void render(float delta) {
-        if (tbGame.isPressed()) { //When you click the Play Button, it sets the screen to the Play Screen, and updates.
-            gamIntoTheWoods.currentState = GamIntoTheWoods.GameState.GAME;
-            gamIntoTheWoods.updateState();
-        }
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+        Gdx.gl.glClearColor(1,1,1,1);
+//        if (tbGame.isPressed()) { //When you click the Play Button, it sets the screen to the Play Screen, and updates.
+//            gamIntoTheWoods.currentState = GamIntoTheWoods.GameState.GAME;
+//            gamIntoTheWoods.updateState();
+//        }
     }
 
     @Override
@@ -87,43 +83,4 @@ import sun.java2d.ScreenUpdateManager;
 
     }
 
-    @Override
-    public boolean keyDown(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped(char character) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
-    }
 }
