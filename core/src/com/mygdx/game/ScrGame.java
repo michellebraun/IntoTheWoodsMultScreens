@@ -2,7 +2,6 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -29,8 +28,8 @@ public class ScrGame implements Screen {
         this.gamIntoTheWoods = gamIntoTheWoods;
     }
 
-
-    public void create() {
+    @Override
+    public void show() {
         Background = new Texture(Gdx.files.internal("lostwoods2.jpg"));
         taHero = new TextureAtlas("Heroinepacked.pack");
         trCurrentFrame = new TextureRegion();
@@ -50,11 +49,6 @@ public class ScrGame implements Screen {
         aniDown = new Animation(1f / 4, trDown);
 
         spriteBatch = new SpriteBatch();
-    }
-
-    @Override
-    public void show() {
-        create();
     }
 
     @Override

@@ -1,8 +1,10 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.Gdx;
 
 
 /**
@@ -10,8 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
  */
 public class TbMenu extends TextButton{
     String sText;
-    public TbMenu(String text, TbsMenu skin) {
-        super(text, skin);
+    public TbMenu(String text, TextButtonStyle tbs) {
+        super(text, tbs);
         sText = text;
         this.setSize(600, 200);
         this.addListener(new ClickListener() {
@@ -19,5 +21,4 @@ public class TbMenu extends TextButton{
                 System.out.println(sText);
             }
         });
-    }
-}
+    }}

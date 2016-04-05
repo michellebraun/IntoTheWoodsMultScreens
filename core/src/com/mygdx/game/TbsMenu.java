@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
@@ -13,20 +14,22 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
  * Created by michelle on 3/27/2016.
  */
 public class TbsMenu extends TextButton.TextButtonStyle {
-    // TextButton.TextButtonStyle buttonStyle;
-   /* Skin skin = new Skin(); // a generic skin for the tbs.
-    public TbsMenu(){
-        TextureAtlas taNewGame;
+    Stage stage;
+    Skin skin = new Skin();
+    TextureAtlas buttonAtlas;
+
+    public TbsMenu() {
         BitmapFont font = new BitmapFont();
         skin.add("default", font);
-        taNewGame = new TextureAtlas(Gdx.files.internal("buttonpressed.txt"));
-        skin.addRegions(taNewGame);
+        buttonAtlas = new TextureAtlas(Gdx.files.internal("Button.pack"));
+        skin.addRegions(buttonAtlas);
         this.up = skin.getDrawable("buttonpressed01");
-        this.over = skin.getDrawable("buttonpressed02");
+        this.down = skin.getDrawable("buttonpressed02");
         this.font = skin.getFont("default");
     }
-    public Skin getTbs() {
-        return skin;
+
+    public TextButton.TextButtonStyle getTbs() {
+        return this;
     }
-}*/
 }
+
