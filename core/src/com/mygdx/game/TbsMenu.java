@@ -14,7 +14,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
  * Created by michelle on 3/27/2016.
  */
 public class TbsMenu extends TextButton.TextButtonStyle {
-    Stage stage;
     Skin skin = new Skin();
     TextureAtlas buttonAtlas;
 

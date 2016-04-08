@@ -18,7 +18,6 @@ import com.badlogic.gdx.Screen;
     TbMenu tbPlay, tbInstr;
     Stage stage;
     SpriteBatch batch;
-    Skin skin = new Skin();
 
     public ScrMain(GamIntoTheWoods gamIntoTheWoods) {
         this.gamIntoTheWoods = gamIntoTheWoods;
