@@ -11,20 +11,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
  */
 public class TbsMenu extends TextButton.TextButtonStyle {
     Skin skin = new Skin();
-    TextureAtlas buttonAtlas;
+    TextureAtlas taAtlas;
 
     public TbsMenu() {
         BitmapFont font = new BitmapFont();
         skin.add("default", font);
-        buttonAtlas = new TextureAtlas(Gdx.files.internal("Button.pack"));
-        skin.addRegions(buttonAtlas);
+        taAtlas = new TextureAtlas(Gdx.files.internal("Button.pack"));
+        skin.addRegions(taAtlas);
         this.up = skin.getDrawable("buttonpressed01");
         this.down = skin.getDrawable("buttonpressed02");
         this.font = skin.getFont("default");
-    }
-
-    public TextButton.TextButtonStyle getTbs() {
-        return this;
     }
 }
 
